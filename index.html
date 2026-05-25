@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+GB+J&display=swap" rel="stylesheet">
+
+    <!--
+    🎀 HELLO STUDENT! 🎀
+    This is your portfolio template!
+    - Change the colors in :root to make it YOURS
+    - Replace "Your Name" with your actual name
+    - Add your own projects, skills, and links
+    - The comments will guide you~
+    -->
+
+    <style>
+        /* ============================================
+           🎨 CSS VARIABLES — Change these to customize!
+           ============================================ */
+        :root {
+            --primary: #6C63FF;      /* Main color - buttons, links, highlights */
+            --primary-dark: #5A52D5; /* Darker shade for hover effects */
+            --bg: #121358;           /* Background color */
+            --bg-card: #232F72;      /* Card/section background */
+            --text: #FFF7C5;         /* Main text color */
+            --text-muted: #a0a0b0;   /* Secondary text */
+            --border: #2a2a3e;       /* Border color */
+            --radius: 12px;          /* Rounded corners */
+            --shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        /* ============================================
+           🌟 RESET & BASE STYLES
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Trebuchet MS', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* ============================================
+           🧭 NAVIGATION BAR
+           ============================================ */
+        nav {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        nav .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #FFF5E5;
+            text-decoration: none;
+            Font-family : 'Charis SIL', serif;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        nav .nav-links a {
+            color: #FFF5E5;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 800;
+        }
+
+        nav .nav-links a:hover {
+            color: #F59E0B;
+        }
+
+        /* Mobile menu button */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* ============================================
+           🦸 HERO SECTION
+           ============================================ */
+        .hero {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            min-height: 80vh;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            color : #C4E2F5;
+        }
+
+        .hero-text h1 .highlight {
+            color: #F4AE52;
+            font-family :  'Playwrite GB J', cursive;
+            font-size : 3.25rem;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.3rem;
+            color: #FFF7C5;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: #FFF7C5;
+            max-width: 500px;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius);
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            margin-left: 1rem;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+        }
+
+        /* Hero avatar placeholder */
+        .hero-avatar {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), #FF6B9D);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            flex-shrink: 0;
+            box-shadow: 0 0 60px rgba(108, 99, 255, 0.3);
+        }
+
+        /* ============================================
+           📋 SECTIONS (About, Projects, Skills, Contact)
+           ============================================ */
+        section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            color : #FFEA6C;
+            font-family :'Playwrite GB J', cursive;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .about-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat .number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat .label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: #BFDDF0;
+            border: 10px solid var(--border);
+            border-radius:  var(--radius);
+            padding: 1.5rem;
+            transition: all 0.3s;
+            border-color : #F59E0B;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+            border-color: #FFF5E5;
+        }
+
+        .project-card h3 {
+            margin-bottom: 0.5rem;
+            color: #F59E0B;
+        }
+
+        .project-card p {
+            color: #121358;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-card .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            background: rgba(108, 99, 255, 0.2);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .project-card .btn {
+            font-size: 0.9rem;
+            padding: 0.5rem 1.2rem;
+        }
+
+        /* Skills Section */
+        .hobby-grid {
+              display: grid;
+              grid-template-column: repeat(2, 1fr);
+              row-gap: 2rem;
+
+          justify-items: center;
+          
+   
+        }
+
+        .hobby-card {
+            background: #BFDDF0;
+            border: 1px solid var(--border);
+            border-radius:  var(--radius);
+            padding: 1.5rem;
+            transition: all 0.3s;
+            border-color : #F59E0B;
+            align-items : Center ;
+            gap: 1.5rem;
+            transition : all 0.3s;
+            
+        }
+        
+        .hobby-images {
+          display: flex;
+          gap: 1rem;
+          margin-bottom: 1rem;
+          
+        }
+        
+        .hobby-img {
+          width: 150px;
+          height: 150px;
+          object-fit: cover;
+          border-radius: 20px;
+          display: block;
+         
+         
+        }
+
+        .hobby-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+            border-color: #FFF5E5;
+        }
+
+        .hobby-card h3 {
+            margin-bottom: 0.5rem;
+            color: #F59E0B;
+        }
+        
+        .hobby-card h4 {
+          font-size : 1rem;
+          color : #0D0B61;
+        }
+
+        .hobby-card p {
+            color: #121358;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .hobby-card .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            background: rgba(108, 99, 255, 0.2);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .hobby-card .btn {
+            font-size: 0.9rem;
+            padding: 0.5rem 1.2rem;
+        }
+
+        /* Contact Section */
+        .contact-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            transition: all 0.3s;
+        }
+
+        .contact-link:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        .contact-container {
+            display: flex;
+            flex-direction: row; 
+            gap: 1.5rem;
+            max-width: 500px;
+        }
+
+        .contact-card {
+            background: #FFFBA7 ;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width : 500px;
+            height : 250px;
+        }
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+    box-shadow: var(--shadow);
+}
+
+.contact-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color : #F59E0B;
+}
+
+.contact-info h3 {
+    color:#F59E0B;
+    margin-bottom: 0.5rem;
+}
+
+.contact-info p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            margin-top: 4rem;
+        }
+
+        /* ============================================
+           📱 RESPONSIVE DESIGN — Mobile friendly!
+           ============================================ */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding: 3rem 1.5rem;
+                min-height: auto;
+            }
+
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-text h1 .highlight {
+              font-size: 3.3rem;
+            }
+
+            .hero-text p {
+                max-width: 100%;
+            }
+
+            .hero-avatar {
+                width: 180px;
+                height: 180px;
+                font-size: 3.5rem;
+            }
+
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 0.8rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .about-stats {
+                justify-content: center;
+            }
+
+            nav .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--bg-card);
+                flex-direction: column;
+                padding: 1rem 2rem;
+                border-bottom: 1px solid var(--border);
+            }
+
+            nav .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         🧭 NAVIGATION — Change the links as needed!
+         ============================================ -->
+    <nav>
+        <div class="nav-inner">
+            <a href="#" class="logo">⋆˚࿔ 𝜗𝜚 M.A.K.S 𝜗𝜚˚⋆</a>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">Salut</a></li>
+                <li><a href="#hobby">Hobbies</a></li>
+                <li><a href="#projects">Archieves</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ============================================
+         🦸 HERO — Your introduction!
+         Replace with YOUR name, role, and description
+         ============================================ -->
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Bonjour, I'm <span class="highlight">Averine</span></h1>
+            <p class="subtitle">⋆˚ an Aspiring Young Artist & Designer ˚⋆</p>
+            <p>
+                I'm into all things creative, crafty, and anyhing to sharpen my creative edge. 
+                I'm also really into networking and building everlasting relationships
+            </p>
+            <div>
+                <a href="#projects" class="btn">View My Work ⋆⋆⋆ </a>
+                <a href="#contact" class="btn btn-outline">Let's Connect  </a>
+            </div>
+        </div>
+        <div class="hero-avatar">👩‍💻</div>
+        <!-- Change the emoji above to something that represents you!
+             Or replace with an <img> tag for your photo! -->
+    </section>
+
+    <!-- ============================================
+         👤 ABOUT — Tell the world about yourself!
+         ============================================ -->
+    <section id="about">
+        <h2>Salut ~⋆! </h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Hello All 𝜗𝜚 </h3>
+                    <p> My name is <strong> Averine Komala Sunggasana </strong>, usually called Verine ~*
+                    I have been in the creative field my whole life, but not in a professional way (yet :9). 
+                    I'am currently focusing on my studies, since i'am still a student at <b>WARDAYA Senior High School</b>. However other than academics,
+                    I'am also focused on building my portofolio in many ways. Such as joining various organizations,
+                    aswell as building connections since now </p>
+                </p>
+                <p>
+                    And I'am also thrilled that your here ! This website is for me to wind back on my journey,
+                    and see how far I have accomplished in my years of life. And ofcourse I hope to keep on reaching much more in the future. 
+                    Well, hope you enjoy the journey all. Au revoir
+                </p>
+                <h3> Xo, Veve ~* </h3>
+                
+        <div class="about-stats">
+                    <div class="stat">
+                        <div class="number" id="projectCount">0</div>
+                        <div class="label">Projects</div>
+                    </div>
+                    <div class="stat">
+                        <div class="number">15+</div>
+                        <div class="label">Years Learning</div>
+                    </div>
+                    <div class="stat">
+                        <div class="number">∞</div>
+                        <div class="label">Curiosity</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         🛠️ SKILLS — What technologies do you know?
+         ============================================ -->
+    <section id="hobby">
+      <h2>My Hobbies *</h2>
+        <div class="hobby-grid" id="hobbyGrid">
+
+            <!-- Project Card 1 — Replace with YOUR project! -->
+            <div class="hobby-card">
+              <img src = "https://i.pinimg.com/1200x/77/be/3c/77be3cf933d127e07ef0405a12b40ce5.jpg" alt="Crocheting" class="hobby-img">
+                <h3>Crocheting and Textile Work  </h3>
+                <p><b>Fun Fact</b> : I almost went to Fashion School.</p>
+                <p>When choosing what senior high school I wanted to attend, one of my options
+                was a fashion school. But, I was haunted by the fear of burn out and the all the pressure got to my head, and I ended up at my current school .
+                However, I still have a huge interest in fashion designing or even anything 
+                related to textile</p>
+                <div class="tags">
+                  <h4>Things that inspire me -> </h4>
+                    <span class="tag">Pinterest </span>
+                    <span class="tag">Anything around me</span>
+                </div>
+                <a href="#" class="btn">Check it out 𝜗𝜚 →</a>
+            </div>
+            
+             <!-- Project Card 1 — Replace with YOUR project! -->
+            <div class="hobby-card">
+              <div class = "hobby-images">
+              <img src = "https://i.pinimg.com/1200x/77/be/3c/77be3cf933d127e07ef0405a12b40ce5.jpg" alt="Crocheting" class="hobby-img">
+              <img src = "https://i.pinimg.com/1200x/77/be/3c/77be3cf933d127e07ef0405a12b40ce5.jpg" alt="Crocheting" class="hobby-img">
+              </div>
+              
+                <h3>Drawings and Illustrating </h3>
+                <p>I started drawing when I ws 3 year old. I'am not joking 
+                What started of as ice cream figures, now has evolve into structured humans 
+                if I do say so my self. It took a few years of practice, going throught my anime 
+                phase, or even refrencing other peoples art styles.</p>
+                
+                <p>I started digital drawing months ago, and this new tech really leveled up 
+                my game. I've done a few projects with my new gear, and proud to say, I'am getting 
+                the hang of it</p>
+                <div class="tags">
+                  <h4>Things that inspire me -> </h4>
+                    <span class="tag">Pinterest </span>
+                    <span class="tag">Anything around me</span>
+                    <span class="tag">My projects </span>
+                </div>
+                <a href="#" class="btn">Check it out  𝜗𝜚 →</a>
+            </div>
+      
+      
+            <div class="hobby-card">
+              <div class = "hobby-images">
+              <img src = "https://i.pinimg.com/1200x/77/be/3c/77be3cf933d127e07ef0405a12b40ce5.jpg" alt="Crocheting" class="hobby-img">
+              <img src = "https://i.pinimg.com/1200x/77/be/3c/77be3cf933d127e07ef0405a12b40ce5.jpg" alt="Crocheting" class="hobby-img">
+              </div>
+              
+                <h3>Theater and Acting  </h3>
+                <p>I've been acting for the past four years now, and I gotta admit, I love it. 
+                I love both filming and acting in real life. What I love about filming is the production behind it, 
+                the camera angle, the editing, sound. While in theater, it is about expressing stuff infront of a live
+                audience. And also getting involve in all the backstage stuff.</p>
+                
+                <div class="tags">
+                  <h4>Things that inspire me -> </h4>
+                    <span class="tag">Films </span>
+                    <span class="tag">simply ideas in my head</span>
+                    <span class="tag">Seniors and Mentors </span>
+                </div>
+                <a href="#" class="btn">Check it out  𝜗𝜚 →</a>
+            </div>
+            
+            <div class="hobby-card">
+              <div class = "hobby-images">
+              <img src = "https://i.pinimg.com/1200x/77/be/3c/77be3cf933d127e07ef0405a12b40ce5.jpg" alt="Crocheting" class="hobby-img">
+              <img src = "https://i.pinimg.com/1200x/77/be/3c/77be3cf933d127e07ef0405a12b40ce5.jpg" alt="Crocheting" class="hobby-img">
+              </div>
+              
+                <h3>Video editing </h3>
+                <p>Lately, I've also been active on behind the scens productions. I enjoy it. Creating 
+                framing in my head, and coming up wth fun content ideas. I just love it</p>
+                <div class="tags">
+                  <h4>Things that inspire me -> </h4>
+                    <span class="tag">Capcut </span>
+                    <span class="tag">Instagram</span>
+                    <span class="tag">Tiktok content</span>
+                </div>
+                <a href="#" class="btn">Check it out  𝜗𝜚 →</a>
+            </div>
+
+        </div>
+    </section>
+    
+
+    <!-- ============================================
+         🚀 PROJECTS — Show off your work!
+         Add more project cards, or remove the examples
+         ============================================ -->
+    <section id="projects">
+        <h2>My Archieves</h2>
+        <div class="projects-grid" id="projectsGrid">
+
+            <!-- Project Card 1 — Replace with YOUR project! -->
+            <div class="project-card">
+                <h3>Designinng Graphic T-shirt Designs </h3>
+                <p>Designed many T-shirt designs. Some were class jerseys, 
+                and also annual T-shirt desigsn for my church organization </p>
+                <div class="tags">
+                    <span class="tag">Roses T-shirt : 2X</span>
+                    <span class="tag">Class Jersey : 2X</span>
+                </div>
+                <a href="#" class="btn">Review 𝜗𝜚 →</a>
+            </div>
+
+            <!-- Project Card 2 -->
+            <div class="project-card">
+                <h3>Publication and Social Media</h3>
+                <p>Publication for a few events, or even for my personal instagram feed</p>
+                <div class="tags">
+                    <span class="tag">Vox Tacita </span>
+                    <span class="tag">Roses Advertisement </span>
+                    <span class="tag">Loading...🔒</span>
+                </div>
+                <a href="https://www.instagram.com/reel/DXqoBEAD-hb/?igsh=MTA0d3V5NGV1dXN4YQ==" class="btn" target="_blank">Review 𝜗𝜚 →</a>
+            </div>
+
+            <!-- Project Card 3 -->
+            <div class="project-card">
+                <h3>Sepchia</h3>
+                <p>Creating an innovtive safety keychain design with my friends 
+                (it was for a school project, but it was still alot of fun, and also gave
+                me the opportunity to do alot of video editing, aswell as one of my hobbies, CROCHETING)</p>
+                <div class="tags">
+                    <span class="tag">Crocheting</span>
+                    <span class="tag">Film Editing</span>
+                    <span class="tag">Public Pitching</span>
+                </div>
+                <a href="https://www.instagram.com/reel/DWjZX8oE0mWm7Squ2lBymmr7A3424m-fA-RWSE0/?igsh=MW8wZzl3aGlwbnFtbw==
+sepchia" class="btn" target="_blank">Review 𝜗𝜚 →</a>
+            </div>
+            
+             <!-- Project Card 3 -->
+            <div class="project-card">
+                <h3>Musical theater </h3>
+                <p>I have been persuing performing arts since junior high school, ecspecially
+                in theater. I always loved acting and watching films. It has just been my passion
+                and a way to pour out my suppresed emotions</p>
+                <div class="tags">
+                    <span class="tag">The Production of Amora</span>
+                    <span class="tag">Ken Arok : Cinta dan Ambisi</span>
+                    <span class="tag">Loading... 🔒</span>
+                </div>
+                <a href="https://youtu.be/ahW4oQQaGY0?si=KuOqH2JwHRRiBqJk" class="btn" target="_blank">Review 𝜗𝜚 →</a>
+                <a href="https://www.youtube.com/live/vpTkqtWrdlU?si=GW-CUZy1EIOAe6zs" class="btn" target="_blank">Review 𝜗𝜚 →</a>
+            </div>
+            
+            <div class="project-card">
+                <h3>Storytelling </h3>
+                <p>This is a branch of my acting skills. But the pass year I have been getting into storytelling 
+                competitions. The last one I did, I was awarded first place. This is just a new thing in my life
+                but i can't wait to explor it even more</p>
+                <div class="tags">
+                    <span class="tag">NEC (Nasional English Competition)</span>
+                </div>
+                <a href="https://www.instagram.com/p/DSNBExcE4w0haFQWWUYDqgOsoFdMMWzxnDlwss0/?igsh=MTZkeHNzZmNpOW42cg==" class="btn" target="_blank">Review 𝜗𝜚 →</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================================
+         📬 CONTACT — How can people reach you?
+         ============================================ -->
+    <section id="contact">
+    <h2>Let's Connect</h2>
+    <h3>Hey there! Feel free to reach out and say Hi ~*</h3>
+
+    <div class="contact-container">
+
+        <a href="mailto: Veriverin2409@gmail.com" class="contact-card">
+            <div class="contact-icon">📧</div>
+            <div class="contact-info">
+                <h3>My Email</h3>
+                <p>Veriverin2409@gmail.com </p>
+            </div>
+        </a>
+
+        <a href="https://instagram.com/artizzy_.ve" target="_blank" class="contact-card">
+          <div class="contact-icon">
+             <i class="fa-brands fa-instagram"></i>
+              </div>
+              <div class="contact-info">
+                <h3>Instagram</h3>
+                <p>@artizzy_.ve</p>
+                </div>
+        </a>
+
+        <a href="https://linkedin.com" target="_blank" class="contact-card">
+            <div class="contact-icon">💼</div>
+            <div class="contact-info">
+                <h3>LinkedIn</h3>
+                <p>linkedin.com/in/yourname</p>
+            </div>
+        </a>
+
+    </div>
+</section>
+
+    <!-- ============================================
+         📄 FOOTER
+         ============================================ -->
+    <footer>
+        <p>© <span id="currentYear">2026</span> Your Name — Built with 💜 and vanilla code</p>
+    </footer>
+
+    <!-- ============================================
+         ⚡ JAVASCRIPT — Interactive features!
+         ============================================ -->
+    <script>
+        // ============================================
+        // 🧭 Mobile Menu Toggle
+        // ============================================
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Close menu when a link is clicked (mobile)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        // ============================================
+        // 📅 Auto-update copyright year
+        // ============================================
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // ============================================
+        // 🔢 Count projects automatically
+        // ============================================
+        const projectCount = document.querySelectorAll('.project-card').length;
+        document.getElementById('projectCount').textContent = projectCount;
+
+        // ============================================
+        // ✨ Smooth scroll for all anchor links
+        // ============================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // ============================================
+        // 🎉 Console welcome message!
+        // ============================================
+        console.log('🚀 Welcome to my portfolio! Thanks for checking out the code~');
+        console.log('💡 Tip: Change the CSS variables in :root to customize the colors!');
+    </script>
+
+</body>
+</html>
